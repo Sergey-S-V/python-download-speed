@@ -72,6 +72,7 @@ def run_benchmark(url: str, timeout: float) -> BenchmarkResult:
     results = []
     for number in range(1, REQUEST_COUNT + 1):
         try:
+            print(f"Attempt: {number}")
             results.append(download_once(url, timeout))
         except (OSError, HTTPException, ValueError) as error:
             detail = f"HTTP {error.code}: {error.reason}" if isinstance(error, HTTPError) else str(error)
